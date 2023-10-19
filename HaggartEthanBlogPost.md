@@ -15,3 +15,8 @@ A server's only job is to receive and fulfill requests. A client connects from t
 PHP runs on the server. That means it finishes executing long before the client receives the webpage. By then, all calculations have been done. All variables have been used. There is nothing left for the client to do except to display the page. It is useful for keeping internal systems secret from the client so that the client does not have access to internal information, and for accessing things like databases in a safe way.
 
 ### The Problem
+Since PHP runs on the Server _only_, it is difficult to create something called state. State is like a cross-section of a program while it is running. It represents the current parts of the program and the information available at a given time. It is easy to have state with something like JavaScript that is running in the client. PHP runs on the server, though, so all the communication comes through HTML requests and responses. The client cannot access anything when the server is running, and the server cannot respond to anything on the client unless asked.
+
+State is very, very useful when web programming. One great example of state is authentication. When someone logs in to a website, that login should remain valid for each new page served by the server. The client should not have to put in credentials every time a new page is accessed. If the client needs to request information specific to the logged-in user, it should be able to do so with no problem. With a defined state, the client and server can pass information back and forth to make this process seamless. Without state, PHP is not very useful.
+
+### The Solution
