@@ -1,2 +1,2 @@
-# The Ins and Outs of PHP
-## With Ethan Haggart
+# The Ins and Outs of PHP Sesions
+With Ethan Haggart
