@@ -38,7 +38,8 @@ Make sure you have some text editor available to write your code and some way to
 We want to create a basic php file so that we can test using sessions. Make a file named "index.php" and put in some basic HTML so that it will display on your browser. Make sure that your Docker container is up and running so that you can view the website on localhost.
 
 Here is the index.php I made:
-```<?php
+```
+<?php
 echo "<p>Hello there!</p>";
-?>```
+?>
 
