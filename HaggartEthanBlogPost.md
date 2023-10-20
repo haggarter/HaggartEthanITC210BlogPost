@@ -20,7 +20,7 @@ Since PHP runs on the Server _only_, it is difficult to create something called 
 State is very, very useful when web programming. One great example of state is authentication. When someone logs in to a website, that login should remain valid for each new page served by the server. The client should not have to put in credentials every time a new page is accessed. If the client needs to request information specific to the logged-in user, it should be able to do so with no problem. With a defined state, the client and server can pass information back and forth to make this process seamless. Without state, PHP is not very useful.
 
 ### The Solution
-The solution is quite simple. It is, just pass the information back and forth! This passing of information works through something called sessions. A PHP session is just a temporary file created on the server that holds information about a specific client. It contains session variables that can be accessed across all other files. It has a timeout value, and while it has not yet expired it will be valid.
+The solution is quite simple. It is, just store the information on the server! This passing of information works through something called sessions. A PHP session is just a temporary file created on the server that holds information about a specific client. It contains session variables that can be accessed across all other files. It has a timeout value, and while it has not yet expired it will be valid.
 
 #### How are sessions made?
 PHP initiates the session, creating a temporary session file stored on the server. The server passes a unique identifier back to the client in the form of a cookie. Whenever the client connects to the server, the cookie is passed, too. It tells the server which session to use based on the identifier provided by the cookie. The cookie is not persistent, so when the browser is closed the session is lost.
@@ -115,3 +115,12 @@ One unfortunate issue with sessions is that they do not scale well. A file is cr
 That being said, for many purposes they are an easy solution to the problem of global state. If your site does not expect extremely high volumes of users, then sessions are probably the cheap way to go.
 
 ## Additional Resources
+https://www.w3schools.com/php/php_sessions.asp - W3 Schools is an excellent resource for web programming. If you need a quick refresher on the syntax, go to them. They have examples that can help you remember the technical part of setting up a session.
+
+https://www.php.net/manual/en/book.session.php - This is the official PHP manual for sessions. It documents everything that can be done with sessions and all of the relevant functions. It is very dense and technical, but if you want to do something complicated with sessions this should be a go-to to even understand what is possible.
+
+
+
+https://www.docker.com - This is the Docker website, in case you need to install Docker for the purposes of the tutorial.
+
+https://code.visualstudio.com - This is the VS Code website, in case you need to install it for the purposes of the tutorial.
