@@ -2,9 +2,10 @@ version: "3"
 
 services:
     web:
-        image: httpd
-        container_name: it210_blog_apache
+        container_name: blog-apache-php
+        build: .
         ports:
-            - 80:80
+         - 80:80
+         - 443:443
         volumes:
-            - ./src:/usr/local/apache2/htdocs
+         - ./src:/var/www/html

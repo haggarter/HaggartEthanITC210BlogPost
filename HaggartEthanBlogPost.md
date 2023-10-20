@@ -32,8 +32,13 @@ Let's get down to business and walk through some examples.
 ## Tutorial
 
 ### Setup
-Make sure you have some text editor available to write your code and some way to host a local server. I would suggest using VS Code and Docker containers, since they are easy to work with. Links to their websites will appear in the Additional Resources section so that you can install those programs. That is what I will be using when writing this tutorial. The tutorial will assume you have Docker installed and can use it in VS Code. This tutorial uses Apache with Docker to make a basic website.
+Make sure you have some text editor available to write your code and some way to host a local server. I would suggest using VS Code and Docker containers, since they are easy to work with. Links to their websites will appear in the Additional Resources section so that you can install those programs. That is what I will be using when writing this tutorial. The tutorial will assume you have Docker installed and can use it with VS Code to set up a container running an Apache server.
 
 ### Step 1
-We want to create a basic php file so that we can test using sessions. Make a file named "index.php" and put in some basic HTML so that it will display on your browser. Make sure that your Docker contain
+We want to create a basic php file so that we can test using sessions. Make a file named "index.php" and put in some basic HTML so that it will display on your browser. Make sure that your Docker container is up and running so that you can view the website on localhost.
+
+Here is the index.php I made:
+```<?php
+echo "<p>Hello there!</p>";
+?>```
 
