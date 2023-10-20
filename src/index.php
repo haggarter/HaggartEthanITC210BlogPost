@@ -1,4 +1,4 @@
 <?php
-start_session();
+session_start();
 echo "<p>Hello there!</p>";
 ?>
