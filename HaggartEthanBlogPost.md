@@ -7,9 +7,9 @@ With Ethan Haggart
 PHP is an interpreted programming language used primarily in web development. It is run entirely on the web server, and only the resulting HTML is passed back to the client to be displayed. This means that unlike languages like JavaScript, the client has no access to PHP code.
 
 #### Wait. Client? Server? What?
-Websites consist of many moving parts that work together to create the user experience many people are used to. When someone opens Google Chrome, Safari, or any browser they are opening a profgram that is running on their machine. That program can do things like display web pages, search the internet, and run JavaScript, a programming language. A browser does not hold all of the websites on the internet, though (that would be a pretty massive local database). Instead, the browser relies on being "served" websites from other places on the internet, known as servers.
+Websites consist of many moving parts that work together to create the user experience many people are used to. When someone opens Google Chrome, Safari, or any browser they are opening a program that is running on their machine. That program can do things like display web pages, search the internet, and run JavaScript code. A browser does not hold all of the websites on the internet, though (that would be a pretty massive local database). Instead, the browser relies on being "served" websites from other places on the internet, known as servers.
 
-A server's only job is to receive and fulfill requests. A client connects from the client's browser, sending a request to the server. The server then has to figure out what the client is requesting and send that information back to the client. It gets the right files and sends them back so the server can display them to the user. That is what happens when someone accesses a website on the internet. A client asked a server for information, and the server sent that information back across the internet.
+A server's only job is to receive and fulfill requests. A client connects from the client's browser, sending a request to the server. The server then has to figure out what the client is requesting and send that information back to the client. It gets the right files and sends them back so the browser can display them to the user. That is what happens when someone accesses a website on the internet. A client asked a server for information, and the server sent that information back across the internet.
 
 #### And how does that apply to PHP?
 PHP runs on the server. That means it finishes executing long before the client receives the webpage. By then, all calculations have been done. All variables have been used. There is nothing left for the client to do except to display the page. It is useful for keeping internal systems secret from the client so that the client does not have access to internal information, and for accessing things like databases in a safe way.
@@ -27,12 +27,12 @@ PHP initiates the session, creating a temporary session file stored on the serve
 
 Now there is state! The server knows who the client is and can hold information about the client. Things like authentication, updating pages, and other interactive features are now possible with a PHP session. As long as the user does not close the browser and the cookie does not expire, the session will be active. This is how websites keep a user logged in even when a tab is closed and reopened.
 
-Let's get down to business and walk through an example for how to go about creating this session in PHP.
+Let's get down to business and walk through an example for how to go about creating a session in PHP.
 
 ## Tutorial
 
 ### Setup
-Make sure you have some text editor available to write your code and some way to host a local server. I would suggest using VS Code and Docker containers, since they are easy to work with. Links to their websites will appear in the Additional Resources section so that you can install those programs. That is what I will be using when writing this tutorial. The tutorial will assume you have Docker installed and can use it with VS Code to set up a container running an Apache server. **If you do not know how to set up the docker-compose.yml file or how to get a Dockerfile so that you can use php, you can use the files provided in this repository**
+Make sure you have some text editor available to write your code and some way to host a local server. I would suggest using VS Code and Docker containers, since they are easy to work with. Links to their websites will appear in the Additional Resources section so that you can install those programs. That is what I will be using when writing this tutorial. The tutorial will assume you have Docker installed and can use it with VS Code to set up a container running an Apache server. **If you do not know how to set up the docker-compose.yml file or how to get a Dockerfile so that you can use php, you can use the files provided in this repository.**
 
 ### Step 1: Create an index.php
 We want to create a basic php file so that we can test using sessions. Make a file named "index.php" and put in some basic HTML so that it will display on your browser. Make sure that your Docker container is up and running so that you can view the website on localhost.
@@ -47,7 +47,7 @@ echo "<p>Hello there!</p>";
 ![Basic website](basicphp.png)
 
 ### Step 2: Initiate the session
-We need to initiate the session. We do this by using the `session_start()` function. Add this at the beginning of your index.php.
+We need to initiate the session. We do this by using the `session_start()` function. Add this at the beginning of your index.php in order to initiate the session right from the begnning.
 
 #### `session_start()` in my index.php
 ```
@@ -63,7 +63,7 @@ This will not change anything on the website, but we can see the cookie generate
 ![Session cookie](newcookie.png)
 
 ### Step 3: Session variables
-That is all well and good, but we want to showcase just little bit of what sessions can do. We will start with how to set a session variable. You can access the session after calling `session_start()` with `$_SESSION`. `$_SESSION` is an array of key-value pairs. To add a variable to the session, use the syntax `$_SESSION["exampleVar"]`.
+That is all well and good, but we want to showcase just little bit of what sessions can do. We will start with how to set a session variable. You can access the session after calling `session_start()` with `$_SESSION`. `$_SESSION` is an array of key-value pairs. To add a variable to the session or access a variable in the session, use the syntax `$_SESSION[<"<variable name>">]`.
 
 #### Adding a session variable to my index.php
 ```
@@ -104,3 +104,14 @@ if ($_SESSION["exampleVar"]) {
 
 #### The new text after reloading
 ![Grievous](grievous.png)
+
+## Final Words
+Sessions are extremely useful. They provide a way to have a global state across the client and the server. The server can tailor information to the client and can provide for multiple users and multiple clients to use the same databases. It is an elegant solution to a difficult problem.
+
+As far as security goes, default PHP sessions are very secure because they implement digital signatures in the cookies stored on the client browser. Digital signatures are extremely difficult to forge, which in cryptography means basically impossible. If you use a PHP session, you do not need to worry about forged cookies. If you do not use default sessions, there might be security issues. Stay vigilant and choose safe software.
+
+One unfortunate issue with sessions is that they do not scale well. A file is created on the server for each user. The file may be small, but with enough users that could be a lot of storage dedicated to sessions. The more users, the larger the cost will be to the server in space and performance. For companies like Google that have a ridiculous number of users constantly accessing their sites, sessions are rendered useless.
+
+That being said, for many purposes they are an easy solution to the problem of global state. If your site does not expect extremely high volumes of users, then sessions are probably the cheap way to go.
+
+## Additional Resources
