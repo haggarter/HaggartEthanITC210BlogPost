@@ -44,4 +44,4 @@ echo "<p>Hello there!</p>";
 ?>
 ```
 #### The website displayed in my browser:
-
+![Basic website]("basicphp.png")
