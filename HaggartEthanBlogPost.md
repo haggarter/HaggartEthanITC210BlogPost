@@ -32,10 +32,12 @@ Let's get down to business and walk through an example for how to go about creat
 ## Tutorial
 
 ### Setup
-Make sure you have some text editor available to write your code and some way to host a local server. I would suggest using VS Code and Docker containers, since they are easy to work with. Links to their websites will appear in the Additional Resources section so that you can install those programs. That is what I will be using when writing this tutorial. The tutorial will assume you have Docker installed and can use it with VS Code to set up a container running an Apache server. **If you do not know how to set up the docker-compose.yml file or how to get a Dockerfile so that you can use php, you can use the files provided in this repository.**
+If you want to follow along exactly, make sure you have some text editor available to write your code and some way to host a local server. Otherwise reading will be sufficient.
+
+I would suggest using VS Code and Docker containers if you decide to follow along, since they are easy to work with. They are not necessary nor relevant to this tutorial, so instructions will not be provided for setting up a Docker container nor for downloading extansions on VS Code. If you want to download Docker or VS Code, the links are available in the Additional Resources section If you do not know how to set up the docker-compose.yml file or how to set up a Dockerfile so that you can use php, you can use the files provided in this repository.
 
 ### Step 1: Create an index.php
-We want to create a basic php file so that we can test using sessions. Make a file named "index.php" and put in some basic HTML so that it will display on your browser. Make sure that your Docker container is up and running so that you can view the website on localhost.
+We want to create a basic php file so that we can test using sessions. Make a file named "index.php" and put in some basic HTML so that it will display on your browser. If you are following along on your device, make sure that your Docker container is up and running so that you can view the website on localhost.
 
 #### The index.php I created:
 ```
@@ -119,7 +121,9 @@ https://www.w3schools.com/php/php_sessions.asp - W3 Schools is an excellent reso
 
 https://www.php.net/manual/en/book.session.php - This is the official PHP manual for sessions. It documents everything that can be done with sessions and all of the relevant functions. It is very dense and technical, but if you want to do something complicated with sessions this should be a go-to to even understand what is possible.
 
+https://www.youtube.com/watch?v=DtiQLCFWsVU - This is an excellent video walkthrough for everything that was present in the Tutorial section. It also provides more coverage of HTML and PHP's role.
 
+https://www.phptutorial.net/php-tutorial/php-session/ - This is a nice intermediate article about sessions. It is much more in-depth than W3 Schools but is not dense like the official PHP documentation.
 
 https://www.docker.com - This is the Docker website, in case you need to install Docker for the purposes of the tutorial.
 
