@@ -62,8 +62,8 @@ This will not change anything on the website, but we can see the cookie generate
 #### The cookie representing my session
 ![Session cookie](newcookie.png)
 
-### Step 3: 
-That is all well and good, but we want to showcase just little bit of what sessions can do. We will start with how to set a session variable. You can access the session after calling `session_start()` with `$_SESSION`. Variables are stored in the session as key-value pairs. To add a variable to the session, use the syntax `$_SESSION["exampleVar"]`.
+### Step 3: Session variables
+That is all well and good, but we want to showcase just little bit of what sessions can do. We will start with how to set a session variable. You can access the session after calling `session_start()` with `$_SESSION`. `$_SESSION` is an array of key-value pairs. To add a variable to the session, use the syntax `$_SESSION["exampleVar"]`.
 
 #### Adding a session variable to my index.php
 ```
@@ -80,18 +80,12 @@ You can view the contents of a variable using `var_dump(<variable name>)`. Echo 
 #### Contents of `$_SESSION` displayed with `var_dump()`
 ![Session variable](sessionvariable.png)
 
+### Step 4: This is where the fun begins
+Now that you can initiate a session and store session variables, the power is in your hands to use sessions. Please use them in an ethical way. I have included something really simple I made with sessions. Now you are prepared to go forth and code. Have fun!
 
+The following code will change what is displayed each time the site is reloaded.
 
-
-
-
-
-
-
-
-
-
-
+#### My simple index.php program using session variables
 ```
 <?php
 session_start();
@@ -104,3 +98,9 @@ if ($_SESSION["exampleVar"]) {
 }
 ?>
 ```
+
+#### The initial page on first navigation
+![Kenobi](kenobi.png)
+
+#### The new text after reloading
+![Grievous](grievous.png)
