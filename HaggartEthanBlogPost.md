@@ -23,11 +23,11 @@ State is very, very useful when web programming. One great example of state is a
 The solution is quite simple. It is, just pass the information back and forth! This passing of information works through something called sessions. A PHP session is just a temporary file created on the server that holds information about a specific client. It contains session variables that can be accessed across all other files. It has a timeout value, and while it has not yet expired it will be valid.
 
 #### How are sessions made?
-This guide will get to that part in detail later, but it is worth a quick explanation now. PHP initiates the session, creating a temporary session file. The server passes a unique identifier back to the client in the form of a cookie. Whenever the client connects to the server, the cookie is passed, too. It tells the server which session to use based on the identifier provided by the cookie.
+PHP initiates the session, creating a temporary session file stored on the server. The server passes a unique identifier back to the client in the form of a cookie. Whenever the client connects to the server, the cookie is passed, too. It tells the server which session to use based on the identifier provided by the cookie. The cookie is not persistent, so when the browser is closed the session is lost.
 
-Now there is state! The server knows who the client is and can hold information about the client. Things like authentication, updating pages, and other interactive features are now possible with a PHP session.
+Now there is state! The server knows who the client is and can hold information about the client. Things like authentication, updating pages, and other interactive features are now possible with a PHP session. As long as the user does not close the browser and the cookie does not expire, the session will be active. This is how websites keep a user logged in even when a tab is closed and reopened.
 
-Let's get down to business and walk through some examples.
+Let's get down to business and walk through an example for how to go about creating this session in PHP.
 
 ## Tutorial
 
@@ -45,3 +45,14 @@ echo "<p>Hello there!</p>";
 ```
 #### The website displayed in my browser:
 ![Basic website](basicphp.png)
+
+### Step 2
+We need to initiate the session. We do this by using the `start_session()` function. Add this at the beginning of your index.php.
+
+#### `start_session()` in my index.php
+```
+<?php
+start_session();
+echo "<p>Hello there!</p>";
+?>
+```
