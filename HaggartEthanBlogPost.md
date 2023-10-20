@@ -34,7 +34,7 @@ Let's get down to business and walk through an example for how to go about creat
 ### Setup
 Make sure you have some text editor available to write your code and some way to host a local server. I would suggest using VS Code and Docker containers, since they are easy to work with. Links to their websites will appear in the Additional Resources section so that you can install those programs. That is what I will be using when writing this tutorial. The tutorial will assume you have Docker installed and can use it with VS Code to set up a container running an Apache server. **If you do not know how to set up the docker-compose.yml file or how to get a Dockerfile so that you can use php, you can use the files provided in this repository**
 
-### Step 1
+### Step 1: Create an index.php
 We want to create a basic php file so that we can test using sessions. Make a file named "index.php" and put in some basic HTML so that it will display on your browser. Make sure that your Docker container is up and running so that you can view the website on localhost.
 
 #### The index.php I created:
@@ -46,7 +46,7 @@ echo "<p>Hello there!</p>";
 #### The website displayed in my browser:
 ![Basic website](basicphp.png)
 
-### Step 2
+### Step 2: Initiate the session
 We need to initiate the session. We do this by using the `session_start()` function. Add this at the beginning of your index.php.
 
 #### `session_start()` in my index.php
@@ -62,4 +62,45 @@ This will not change anything on the website, but we can see the cookie generate
 #### The cookie representing my session
 ![Session cookie](newcookie.png)
 
-### Step 3
+### Step 3: 
+That is all well and good, but we want to showcase just little bit of what sessions can do. We will start with how to set a session variable. You can access the session after calling `session_start()` with `$_SESSION`. Variables are stored in the session as key-value pairs. To add a variable to the session, use the syntax `$_SESSION["exampleVar"]`.
+
+#### Adding a session variable to my index.php
+```
+<?php
+session_start();
+echo "<p>Hello there!</p>";
+$_SESSION["exampleVar"] = "General Kenobi, you are a bold one.";
+echo "<p>".var_dump($_SESSION)."</p>";
+?>
+```
+
+You can view the contents of a variable using `var_dump(<variable name>)`. Echo that to the website and you can verify that the session variable was stored correctly.
+
+#### Contents of `$_SESSION` displayed with `var_dump()`
+![Session variable](sessionvariable.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+<?php
+session_start();
+if ($_SESSION["exampleVar"]) {
+  echo "<p>General Kenobi, you are a bold one.</p>";
+  $_SESSION["exampleVar"] = false;
+} else {
+  echo "<p>Hello there!</p>";
+  $_SESSION["exampleVar"] = true;
+}
+?>
+```
